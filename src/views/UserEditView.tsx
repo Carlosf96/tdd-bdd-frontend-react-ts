@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useParams } from "react-router-dom";
 import { User, user } from "../entities/User";
 import { UserService } from "../services/userServices";
@@ -8,7 +8,7 @@ const userService = UserService();
 export const UserEditView = () => {
   const { id } = useParams();
   const [UserDetails, setUserDetails] = React.useState<User>(user());
-
+  
   React.useEffect(() => {
     (async () => {
       const userData = await userService.getOneById(String(id));
@@ -16,15 +16,28 @@ export const UserEditView = () => {
     })();
   });
 
-
   return (
     <div>
       <form>
-        <label >
+        <label>
           <p>Enter First Name</p>
-          <input id="first" name="firstName" placeholder="enter first name"></input>
+          <input
+            id="first"
+            name="firstName"
+            placeholder="enter first name"
+            style={{}}
+          ></input>
+          <button
+            type="submit"
+            style={{
+              border: "none",
+              blockSize: "20px"
+            }}
+          >
+            Edit
+          </button>
         </label>
       </form>
     </div>
-  )
-}
+  );
+};
