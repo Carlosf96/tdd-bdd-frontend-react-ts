@@ -5,6 +5,7 @@ export interface IUserService {
   getList: () => Promise<User[]>;
   getOneById: (id: string) => Promise<User>;
   createUser: (userData: object) => Promise<User>;
+  updateUser: (id: string) => Promise<User>;
 }
 
 export const UserService = (): IUserService => {
@@ -21,10 +22,16 @@ export const UserService = (): IUserService => {
     const res = await axios.get(`http://localhost:8000/api/users/${id}`);
     return Promise.resolve(res.data);
   };
+  const updateUser = async (id: string) => {
+    const res = await axios.put(`http://localhost:8000/api/users/${id}`);
+    return Promise.resolve(res.data);
+  }
+
 
   return {
     getList,
     getOneById,
     createUser,
+    updateUser,
   };
 };
