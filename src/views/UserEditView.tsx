@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 // import { useParams } from "react-router-dom";
 import { User, user } from "../entities/User";
-import { UserService } from "../services/userServices";
+import { AxiosUserService } from "../services/AxiosUserService";
 import useForm from "react-hook-form";
-const userService = UserService();
+const userService = AxiosUserService();
 
 export const UserEditView = () => {
   const [ UserDetails , setUserDetails] = useState<User>(user());
@@ -22,6 +22,9 @@ export const UserEditView = () => {
     (async()=>{
     const id = UserDetails._id;
     console.log(id, 'User id')
+    await userService.deleteUser(id);
+    console.log('User Has been deleted');
+    
     })();
   }
 
@@ -31,7 +34,7 @@ export const UserEditView = () => {
           <label>Enter ID: </label>
           <input
             id="id"
-            name="uuid"
+            name="_id"
             placeholder="id"
             ref={register}
             style={{

@@ -1,15 +1,7 @@
 import axios from "axios";
-import { User } from "../entities/User";
+import { IUserService } from './UserService';
 
-export interface IUserService {
-  getList: () => Promise<User[]>;
-  getOneById: (id: string) => Promise<User>;
-  createUser: (userData: object) => Promise<User>;
-  updateUser: (id: string, user: object) => Promise<User>;
-  deleteUser: (id: string) => Promise<User>;
-}
-
-export const UserService = (): IUserService => {
+export const AxiosUserService = (): IUserService => {
   const createUser = async (userData: object) => {
     const res = await axios.post('http://localhost:8000/api/users/', userData);
     return Promise.resolve(res.data);

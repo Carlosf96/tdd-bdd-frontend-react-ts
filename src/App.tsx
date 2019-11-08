@@ -1,8 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { UserListView } from "./views/UserListView";
-import { UserDetailsView } from "./views/UserDetailsView";
+import { UserListViewFactory } from "./views/UserListView";
+import { AxiosUserService } from './services/AxiosUserService';
+import { UserDetailsViewFactory } from "./views/UserDetailsView";
 import { UserEditView } from './views/UserEditView';
+
+const UserDetailsView = UserDetailsViewFactory(AxiosUserService());
+const UserListView = UserListViewFactory(AxiosUserService());
 
 const App: React.FC = () => {
   return (
@@ -12,7 +16,7 @@ const App: React.FC = () => {
           <UserListView />
         </Route>
         <Route path="/:id">
-          <UserDetailsView />
+          <UserDetailsView/>
           <UserEditView/>
         </Route>
       </Switch>
