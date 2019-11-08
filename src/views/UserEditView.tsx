@@ -8,6 +8,7 @@ const userService = AxiosUserService();
 export const UserEditView = () => {
   const [ UserDetails , setUserDetails] = useState<User>(user());
   const { register, handleSubmit } = useForm();
+  
   const onSubmit = (data: any, e: Event) => {
     (async () => {
       const id = data._id;
@@ -18,13 +19,13 @@ export const UserEditView = () => {
       console.log("User updated");
     })();
   };
+
   const handleDelete = (e: any) => {
     (async()=>{
     const id = UserDetails._id;
     console.log(id, 'User id')
     await userService.deleteUser(id);
     console.log('User Has been deleted');
-    
     })();
   }
 

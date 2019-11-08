@@ -34,9 +34,12 @@ export const UserListViewFactory = (userService: IUserService) => {
       <div className="App">
         {Users.map(user => {
           return (
+            <div>
+            <div>{user.firstName + ' ' + user.lastName}</div>
             <Link key={user._id} to={`/${user._id}`}>
-              <div>{user.firstName + ' ' + user.lastName}</div>
+            <div>Edit</div>
             </Link>
+            </div>
           );
         })}
       </div>

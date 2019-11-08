@@ -10,7 +10,7 @@ export const UserDetailsViewFactory = (userService: IUserService) => {
   
     React.useEffect(() => {
       (async () => {
-        const UserData = await userService.getOneById(String(id));
+        const UserData = await userService.getUserById(String(id));
         setUserDetails(UserData);
       })();
     });

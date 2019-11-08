@@ -11,7 +11,7 @@ export const AxiosUserService = (): IUserService => {
     return Promise.resolve(res.data);
   };
 
-  const getOneById = async (id: string) => {
+  const getUserById = async (id: string) => {
     const res = await axios.get(`http://localhost:8000/api/users/${id}`);
     return Promise.resolve(res.data);
   };
@@ -27,7 +27,7 @@ export const AxiosUserService = (): IUserService => {
 
   return {
     getList,
-    getOneById,
+    getUserById,
     createUser,
     updateUser,
     deleteUser,
