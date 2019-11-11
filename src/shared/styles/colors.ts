@@ -1,1 +1,1 @@
-export const PRIMARY_BLUE = "blue";
+export const COOL_BLUE = "#1c1cb9";

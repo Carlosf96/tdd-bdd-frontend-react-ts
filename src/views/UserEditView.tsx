@@ -1,90 +1,38 @@
-import React, { useState } from "react";
-// import { useParams } from "react-router-dom";
-import { User, user } from "../entities/User";
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useHistory } from "react-router";
 import useForm from "react-hook-form";
 import { IUserService } from "../services/UserService";
-
+import { EditUserForm } from '../Users/components/EditUserForm';
 
 export const UserEditViewFactory = (userService: IUserService) => {
   const UserEditView = () => {
-    const [ UserDetails , setUserDetails] = useState<User>(user());
     const { register, handleSubmit } = useForm();
-    
-    const onSubmit = (data: any, e: Event) => {
+    const { id } = useParams();
+    const history = useHistory();
+
+    const onSubmit = (data: any) => {
       (async () => {
-        const id = data._id;
         const userEdit = data;
         console.log(userEdit, "user edit object");
-        setUserDetails(userEdit);
         await userService.updateUser(String(id), userEdit);
         console.log("User updated");
+        history.replace('/');
       })();
     };
   
-    const handleDelete = (e: any) => {
+    const handleDelete = () => {
       (async()=>{
-      const id = UserDetails._id;
       console.log(id, 'User id')
       await userService.deleteUser(String(id));
       console.log('User Has been deleted');
+      history.replace('/');
       })();
     }
   
     return (
-      <div id=''>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Enter ID: </label>
-            <input
-              id="id"
-              name="_id"
-              placeholder="id"
-              ref={register}
-              style={{
-                border: "none",
-                blockSize: "20px"
-              }}
-            />
-            <label>Enter firstName: </label>
-            <input
-              id="firstName"
-              name="firstName"
-              placeholder="First Name"
-              ref={register}
-              style={{
-                border: "none",
-                blockSize: "20px"
-              }}
-            />
-            <label>Enter lastName: </label>
-            <input
-              id="lastName"
-              name="lastName"
-              placeholder="Last Name"
-              ref={register}
-              style={{
-                border: "none",
-                blockSize: "20px"
-              }}
-            />
-            <button
-              type="submit"
-              style={{
-                border: "none",
-                blockSize: "20px"
-              }}
-            >
-              Edit
-            </button>
-        </form>
-        <button
-            onClick={handleDelete}
-            style={{
-              border: "none",
-              blockSize: "20px"
-            }}
-          >
-            Delete
-          </button>
+      <div>
+        <EditUserForm onSubmit={handleSubmit(onSubmit)} register={register} handleDelete={handleDelete}/>
       </div>
     );
   };

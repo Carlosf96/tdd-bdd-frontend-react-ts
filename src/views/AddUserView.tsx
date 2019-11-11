@@ -13,7 +13,6 @@ export const AddUserViewFactory = (userService: IUserService) => {
       (async () => {
         const newUser = data
         await userService.createUser(newUser);
-        console.log(data);
         history.replace("/");
       })();
     };
@@ -21,7 +20,6 @@ export const AddUserViewFactory = (userService: IUserService) => {
 
     return (
       <div>
-        bzzz
         <AddUserForm onSubmit={handleSubmit(onSubmit)} register={register} />
       </div>
     );

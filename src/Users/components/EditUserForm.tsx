@@ -1,55 +1,58 @@
 import * as React from "react";
-import { SaveButton } from "../atoms/SaveButton";
-
+import { Button } from "../../shared/atoms/Button";
 
 export interface IUserFormProps {
-  firstName: string;
-  lastName: string;
-  age: number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onClickSave: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onSubmit: (event: React.FormEvent) => void;
+  register: (instance: HTMLInputElement) => void;
+  handleDelete: () => void;
 }
 
-export const EventForm: React.FC<IUserFormProps> = ({ firstName, lastName, age, onChange, onClickSave }) => {
+export const EditUserForm: React.FC<IUserFormProps> = ({ onSubmit, register, handleDelete }) => {
   return (
     <div>
-      <form id="createUserForm">
+      <form id="editUserForm" onSubmit={onSubmit}>
         <label>
           First Name:
           <input
             name="firstName"
-            id="createUserForm-UserName"
+            id="editUserForm-UserName"
             type="text"
             required
-            onChange={onChange}
-            value={firstName}
+            ref={register}
           />
-          </label>
-          <label>
+        </label>
+        <label>
           Last Name:
           <input
-            name="LastName"
-            id="createUserForm-UserName"
+            name="lastName"
+            id="editUserForm-UserName"
             type="text"
             required
-            onChange={onChange}
-            value={lastName}
+            ref={register}
           />
-          </label>
-          <label>
+        </label>
+        <label>
           Age:
           <input
-            name="Age"
-            id="createUserForm-UserName"
+            name="age"
+            id="editUserForm-UserName"
             type="text"
             required
-            onChange={onChange}
-            value={age}
+            ref={register}
           />
         </label>
 
-        <SaveButton onClick={onClickSave}>SAVE</SaveButton>
+        <Button>Edit</Button>
       </form>
+      <button
+            onClick={handleDelete}
+            style={{
+              border: "none",
+              blockSize: "20px"
+            }}
+          >
+            Delete
+          </button>
     </div>
   );
 };

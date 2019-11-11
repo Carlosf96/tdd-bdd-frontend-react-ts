@@ -16,6 +16,9 @@ export const AddUserForm: React.FC<IUserFormProps> = ({ onSubmit, register }) =>
             name="firstName"
             id="createUserForm-UserName"
             type="text"
+            style={{
+              border: '.5'
+            }}
             required
             ref={register}
           />
