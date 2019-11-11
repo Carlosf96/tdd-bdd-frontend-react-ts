@@ -1,10 +1,11 @@
 import axios from "axios";
 import { IUserService } from './UserService';
+import { User } from "../entities/User";
 
 export const AxiosUserService = (): IUserService => {
   const createUser = async (userData: object) => {
     const res = await axios.post('http://localhost:8000/api/users/', userData);
-    return Promise.resolve(res.data);
+    return Promise.resolve(res.data as User);
   }
   const getList = async () => {
     const res = await axios.get("http://localhost:8000/api/users/");

@@ -29,17 +29,26 @@ export const UserListViewFactory = (userService: IUserService) => {
     if (error !== null) {
       return <div>Error: {error.message}</div>;
     }
-    console.log(Users);
+    if(!Users.length){
+      return <div>No users found!</div>
+    }
     return (
       <div className="App">
+        <div>
+          <Link to={'/add'}>
+            ADD
+          </Link>
+        </div>
         {Users.map(user => {
           return (
-            <div>
-            <div>{user.firstName + ' ' + user.lastName}</div>
             <Link key={user._id} to={`/${user._id}`}>
-            <div>Edit</div>
+              <div>
+              {user.firstName + ' ' + user.lastName}
+              <Link key={user._id} to={`/${user._id}/edit`}>
+              <p>Edit</p>
+              </Link>
+              </div>
             </Link>
-            </div>
           );
         })}
       </div>

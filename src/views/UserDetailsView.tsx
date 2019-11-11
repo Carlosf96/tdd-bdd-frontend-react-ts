@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { User, user } from "../entities/User";
 import { IUserService } from '../services/UserService';
 
@@ -16,10 +16,13 @@ export const UserDetailsViewFactory = (userService: IUserService) => {
     });
   
     return (
-      <div>
+      <div id='container'>
         <p>id: {UserDetails._id}</p>
         <p>firstName: {UserDetails.firstName}</p>
         <p>lastName: {UserDetails.lastName}</p>
+        <Link to={`/${UserDetails._id}/edit`}>
+          <p>Edit</p>
+        </Link>
       </div>
     );
   };

@@ -1,23 +1,13 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { UserListViewFactory } from "./views/UserListView";
-import { AxiosUserService } from './services/AxiosUserService';
-import { UserDetailsViewFactory } from "./views/UserDetailsView";
-import { UserEditView } from './views/UserEditView';
-
-const UserDetailsView = UserDetailsViewFactory(AxiosUserService());
-const UserListView = UserListViewFactory(AxiosUserService());
+import { UserRouter } from "./Users/Router";
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/">
-          <UserListView />
-        </Route>
-        <Route path="/:id">
-          <UserDetailsView/>
-          <UserEditView/>
+      <Route path="/">
+          <UserRouter />
         </Route>
       </Switch>
     </BrowserRouter>

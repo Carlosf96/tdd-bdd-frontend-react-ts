@@ -2,7 +2,7 @@ export type User = {
   firstName: string,
   lastName: string,
   age: number,
-  _id: string,
+  _id?: string,
 }
 
 export const user = () => ({
