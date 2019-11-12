@@ -1,4 +1,50 @@
 .container {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.main-title {
+  position: absolute;
+  font-weight: bolder;
+}
+
+.users-section {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 75px 0px 0px 0px;
+  justify-content: space-evenly;
+}
+
+.nice-button  {
+  padding: 15px;
+  font-size: 16px;
+  margin: 10px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  background-color: #0066ff;
+  color: #fff;
+  border: 2px solid #0066ff;
+  border-radius: 5px;
+  text-decoration: none;
+  align-content: center;
+  text-align: center;
+}
+
+.nice-button:hover {
+  background-color: #003399;
+	border: 2px solid #003399;
+	cursor: pointer;
+}
+
+.user-card {
+  color: #333;
+  background-color: rgb(243, 233, 233);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  z-index: 4;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  
 }
