@@ -1,0 +1,36 @@
+.cool-input {
+  padding: 10px;
+  border: 1px solid rgb(235, 231, 231);
+  border-radius: 2px;
+	width: 165px;
+}
+.cool-label {
+  font-size: 20px;
+}
+.flex-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: right;
+}
+
+.nice-button  {
+  padding: 15px;
+  font-size: 16px;
+  margin: 10px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  background-color: #E880AF;
+  color: rgb(243, 233, 233);
+  border: 0px solid #E880AF;
+  border-radius: 5px;
+  text-decoration: none;
+  align-content: center;
+  text-align: center;
+  z-index: 5;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.nice-button:hover {
+  background-color: rgba(232, 128, 175, 0.836);
+	cursor: pointer;
+}

@@ -47,25 +47,20 @@ export const UserListViewFactory = (userService: IUserService) => {
         </h1>
         <div className='users-section'>
           <Link to={"/add"} className='nice-button'>
-              ADD  
+            ADD
           </Link>
           {Users.map(user => {
             return (
               <div className='user-card'>
-                <Link 
-                key={user._id} 
-                to={`/${user._id}`}
-                style={{
-                  textDecoration: 'none',
-                }}
+                <Link
+                  key={user._id}
+                  to={`/${user._id}`}
                 >
                   {user.firstName + " " + user.lastName}
-                  <Link 
-                  key={user._id} 
-                  to={`/${user._id}/edit`}
-                  style={{
-                    textDecoration: 'none',
-                  }}>
+                  <Link
+                    key={user._id}
+                    to={`/${user._id}/edit`}
+                    >
                     <p>Edit</p>
                   </Link>
                 </Link>
